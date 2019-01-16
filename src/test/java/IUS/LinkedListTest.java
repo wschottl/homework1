@@ -8,9 +8,8 @@ import static org.junit.Assert.*;
 
 public class LinkedListTest {
 
-    @Before
-    public void setUp() throws Exception {
-    }
+    ILinkedList<String> tester;
+    LinkedList<String> test = new LinkedList<>();
 
     @After
     public void tearDown() throws Exception {
@@ -34,6 +33,7 @@ public class LinkedListTest {
 
     @Test
     public void get() {
+
     }
 
     @Test
@@ -46,9 +46,23 @@ public class LinkedListTest {
 
     @Test
     public void append() {
+        tester = "test1";
+        test.insert(tester);
+        tester = "test2";
+        test.append(tester);
+        System.out.println("append test with 'test2'");
+        assertEquals(tester, test.next.value);
+        tester = null;
+        test = null;
     }
 
     @Test
     public void insert() {
+        tester = "test1";
+        test.insert(tester);
+        System.out.println("Insert 'test1' into test");
+        assertEquals(tester, test.value);
+        tester = null;
+        test = null;
     }
 }

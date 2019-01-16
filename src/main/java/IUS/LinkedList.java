@@ -1,11 +1,11 @@
 package IUS;
 
 
-public class LinkedList<T> implements ILinkedList{
+public class LinkedList<T> implements ILinkedList<T>{
 
 
     T value;
-    private ILinkedList next;
+    public LinkedList next;
 
     public LinkedList(){
         this.next = null;
@@ -46,7 +46,7 @@ public class LinkedList<T> implements ILinkedList{
      * @return the previously next element
      */
     public ILinkedList<T> detach(){
-        ILinkedList temp = new ILinkedList;
+        ILinkedList temp = null;
         temp = this.next;
         this.next = null;
         return temp;
