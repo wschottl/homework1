@@ -4,21 +4,20 @@ package IUS;
 public class LinkedList<T> implements ILinkedList<T>{
 
 
-    T value;
+    T data;
     public ILinkedList next;
 
     public LinkedList(){
         this.next = null;
-        this.value = null;
+        this.data = null;
     }
-    LinkedList head = new LinkedList();
 
     /**
      * Get the next list element
      * @return the next element
      */
     public ILinkedList<T> next(){
-        return head.next;
+        return next;
     }
 
     /**
@@ -26,10 +25,11 @@ public class LinkedList<T> implements ILinkedList<T>{
      * @return the node at the end of the list
      */
     public ILinkedList<T> last(){
-        if(this.next == null){
-            return this;
+        ILinkedList temp = this;
+        while(temp.next() != null){
+            temp = temp.next();
         }
-        return this.next.last();
+        return temp;
     }
 
     /**
@@ -38,7 +38,13 @@ public class LinkedList<T> implements ILinkedList<T>{
      * @return the element n away
      */
     public ILinkedList<T> after(int n){
-        return after(n);
+        ILinkedList temp = this;
+        if(temp != null){
+            for(int i = 0; i<n; i++){
+                temp = temp.next();
+            } //for loop to walk down list
+        } //if to check for a list longer than 1 element
+        return temp;
     }
 
     /**
@@ -57,7 +63,7 @@ public class LinkedList<T> implements ILinkedList<T>{
      * @return the current value
      */
     public T get(){
-        return this.value;
+        return data;
     }
 
     /**
@@ -65,19 +71,17 @@ public class LinkedList<T> implements ILinkedList<T>{
      * @param value the new value
      */
     public void set(T value){
-        this.value = value;
+        data = value;
     }
 
     /**
      * Sets the next element in the list
-     * @param next the next element
+     * @param nextLocal the next element
      *
      * Example: (1->2->3).setNext(4) => 1->4
      */
-    public void setNext(ILinkedList<T> next){
-        LinkedList temp = new LinkedList();
-        this.next = temp;
-        temp.value = next;
+    public void setNext(ILinkedList<T> nextLocal){
+        next = nextLocal;
     }
 
     /**
@@ -87,12 +91,7 @@ public class LinkedList<T> implements ILinkedList<T>{
      * Example: (1->2->3).appnd(4) => 1->2->3->4
      */
     public void append(ILinkedList<T> next){
-        if(this.next == null){
-            LinkedList temp = new LinkedList();
-            temp.value = next;
-            this.next = temp;
-        } // if to add new node
-        else {this.next.append(next);} //else
+        this.last().setNext(next);
     }
 
     /**
@@ -102,9 +101,6 @@ public class LinkedList<T> implements ILinkedList<T>{
      * Example: (1->2->3).insert(4) => 4->1->2->3
      */
     public void insert(ILinkedList<T> newFirst){
-        LinkedList temp = new LinkedList();
-        temp.value = newFirst;
-        temp.next = head.next;
-        head.next = temp;
+        newFirst.append(this);
     }
 }

@@ -1,6 +1,7 @@
 package IUS;
 
 public interface ILinkedList<T> {
+
     /**
      * Get the next list element
      * @return the next element
@@ -40,11 +41,11 @@ public interface ILinkedList<T> {
 
     /**
      * Sets the next element in the list
-     * @param next the next element
+     * @param nextLocal the next element
      *
      * Example: (1->2->3).setNext(4) => 1->4
      */
-    void setNext(ILinkedList<T> next);
+    void setNext(ILinkedList<T> nextLocal);
 
     /**
      * Sets the next element after this current element
