@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class LinkedListTest {
 
     ILinkedList<String> tester;
-    LinkedList<String> test = new LinkedList<>();
+    LinkedList<String> test = new LinkedList<String>();
 
     @After
     public void tearDown() throws Exception {
@@ -46,12 +46,12 @@ public class LinkedListTest {
 
     @Test
     public void append() {
-        tester = "test1";
+        tester = "test1" ;
         test.insert(tester);
         tester = "test2";
         test.append(tester);
         System.out.println("append test with 'test2'");
-        assertEquals(tester, test.next.value);
+        assertEquals(tester, test.next.get());
         tester = null;
         test = null;
     }

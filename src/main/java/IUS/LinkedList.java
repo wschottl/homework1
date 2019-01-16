@@ -5,7 +5,7 @@ public class LinkedList<T> implements ILinkedList<T>{
 
 
     T value;
-    public LinkedList next;
+    public ILinkedList next;
 
     public LinkedList(){
         this.next = null;
